@@ -1,0 +1,1 @@
+export const SET_POKEMON_List = "SET_POKEMON_List";
