@@ -9,7 +9,7 @@ const pokemonListReducer = (state = INITIAL_STATE, action) => {
         case actionTypes.SET_POKEMON_List:
             return {
                 ...state,
-                data: [...action.data.result],
+                data: [...action.data],
             };
         default:
             return state;

@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import App from "./Components/App";
-import "./index/index.html"
 // Todo
 // import "./assets/bootstrap/customVariables.scss";
 // import "./assets/css/styles.scss";

@@ -1,20 +1,39 @@
 import "./pokemonList.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
     getPokemonDetails,
 } from "../../store/actions";
 
-function Main(props) {
+function PokemonList(props) {
     const dispatch = useDispatch();
+
+    // const [pokemon] = useState([{ hp: "", attack: "", type: "", defence: "" }])
     const pokemonList = useSelector(
-        ({ pokemonReducers }) => pokemonReducers.data
+        ({ pokemonListReducer }) => pokemonListReducer.data
     );
 
-    useEffect(() => {
-        // dispatch(getPokemonDetails(axiosGetGroupList));
 
+    const renderGroupList = () =>
+        pokemonList.map((pokemon, index) => {
+            return (
+                <li key={index}>
+                    <div>{pokemon.name}</div>
+                    <div>{pokemon.url}</div>
+                    <div>
+                        <button className="small">Delete</button>
+                    </div>
+
+                </li>
+            )
+        })
+
+
+
+    useEffect(() => {
+        let url = "https://pokeapi.co/api/v2/pokemon"
+        dispatch(getPokemonDetails(url, 151));
     }, []);
 
     return (
@@ -30,17 +49,20 @@ function Main(props) {
                             </ul>
                             <ul className="customBody">
 
-                                {/* {renderGroupList()} */}
+                                {renderGroupList()}
                             </ul>
                         </div>
                     </div>
+
                 </div>
+                <div className="btnContainer"><button className="addBtn">Add pokemon</button></div>
+
             </div>
         </>
     );
 }
 
-export { Main as PokemonList }
+export { PokemonList };
 
 
 

@@ -5,15 +5,11 @@ const setPokemon = (data) => ({
     data,
 })
 
-export const getPokemonDetails = (axiosInstance) => (
+export const getPokemonDetails = (url, limit) => (
     dispatch
 ) => {
-    axiosInstance({
-        method: "GET",
-        data: {}
-    })
-        .then((res) => {
-            dispatch(setPokemon(res.data));
-        })
+    fetch(url + "?" + limit)
+        .then((res) => res.json())
+        .then(res => dispatch(setPokemon(res.results)))
         .catch((err) => { });
 };

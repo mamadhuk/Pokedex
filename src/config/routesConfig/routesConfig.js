@@ -1,7 +1,7 @@
 import { PokemonList } from "../../Components/PokemonList"
 
 const routesConfig = [{
-    path: "/pokemonList",
+    path: "/",
     component: PokemonList,
 },];
 
